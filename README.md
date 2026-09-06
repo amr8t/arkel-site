@@ -18,7 +18,7 @@ Pages are Markdown in `content/`. Templates in `templates/`, styling in
 Pushing to `master` runs `.github/workflows/deploy.yml`, which builds and
 publishes `./public` to the `gh-pages` branch (GitHub Pages →
 "Deploy from a branch" → `gh-pages`). Live at:
-https://amr8t.github.io/arkel/
+https://amr8t.github.io/arkel-site/
 
 ## Auto-generated CLI reference
 
