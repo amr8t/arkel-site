@@ -1,34 +1,32 @@
 # Arkel website
 
-Plain [Zola](https://www.getzola.org/) static site, gh-pages-ready.
+Plain [Zola](https://www.getzola.org/) static site, gh-pages-ready. This repo
+is the site only — the arkel source lives in `../arkel` (or
+`amr8t/arkelstore`).
 
 ## Edit & build locally
 
 ```sh
-zola --root website serve   # live preview at http://127.0.0.1:1111
-zola --root website build   # outputs website/public (gitignored)
+zola serve   # live preview at http://127.0.0.1:1111
+zola build   # outputs ./public (gitignored)
 ```
 
-Pages are Markdown in `website/content/`. Templates in `website/templates/`,
-styling in `website/static/style.css`. Nothing to configure — content is the site.
+Pages are Markdown in `content/`. Templates in `templates/`, styling in
+`static/style.css`. Nothing to configure — content is the site.
 
 ## Deploy
 
-Pushing to `main` when anything under `website/` changes runs
-`.github/workflows/deploy.yml`, which builds and publishes `website/public` to
-the `gh-pages` branch (enable GitHub Pages → "Deploy from a branch" → `gh-pages`).
+Pushing to `main` runs `.github/workflows/deploy.yml`, which builds and
+publishes `./public` to the `gh-pages` branch (enable GitHub Pages →
+"Deploy from a branch" → `gh-pages`). If the repo is renamed, update
+`base_url` in `config.toml` to the new Pages URL.
 
-## Releases / version bumps
+## Auto-generated CLI reference
 
-`cargo` version lives in the root `Cargo.toml`. Bump + tag with
-[`cargo-edit`](https://github.com/killercup/cargo-edit):
+`content/cli.md` is generated from the arkel CLI's clap definitions and is not
+hand-edited. Regenerate it from the arkel checkout:
 
 ```sh
-cargo install cargo-edit
-cargo set-version 0.2.0
-git commit -am "v0.2.0" && git tag v0.2.0 && git push --tags
+cd ../arkel
+./scripts/gen_cli_docs.sh   # writes ../arkel-site/content/cli.md
 ```
-
-The tag triggers `.github/workflows/release.yml`: builds the release binary and
-attaches it to a GitHub Release. `cargo test` + clippy + fmt run on every push
-via `.github/workflows/ci.yml`.
