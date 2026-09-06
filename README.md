@@ -1,8 +1,7 @@
 # Arkel website
 
 Plain [Zola](https://www.getzola.org/) static site, gh-pages-ready. This repo
-is the site only — the arkel source lives in `../arkel` (or
-`amr8t/arkelstore`).
+is the site only — the arkel source lives in `../arkel` (or `amr8t/arkelstore`).
 
 ## Edit & build locally
 
@@ -16,10 +15,10 @@ Pages are Markdown in `content/`. Templates in `templates/`, styling in
 
 ## Deploy
 
-Pushing to `main` runs `.github/workflows/deploy.yml`, which builds and
-publishes `./public` to the `gh-pages` branch (enable GitHub Pages →
-"Deploy from a branch" → `gh-pages`). If the repo is renamed, update
-`base_url` in `config.toml` to the new Pages URL.
+Pushing to `master` runs `.github/workflows/deploy.yml`, which builds and
+publishes `./public` to the `gh-pages` branch (GitHub Pages →
+"Deploy from a branch" → `gh-pages`). Live at:
+https://amr8t.github.io/arkel/
 
 ## Auto-generated CLI reference
 
