@@ -57,7 +57,10 @@ table { border-collapse: collapse; width: 100%; margin: 1rem 0; }
 th, td { border: 1px solid var(--border); padding: 0.45rem 0.75rem; text-align: left; }
 th { background: var(--bg-soft); }
 
-footer { margin-top: 3rem; padding: 1.25rem 0; border-top: 1px solid var(--border); color: var(--muted); font-size: 0.9rem; }
+footer { margin-top: 3rem; padding: 1.25rem 0; border-top: 1px solid var(--border); color: var(--muted); font-size: 0.9rem; display: flex; align-items: center; gap: 0.6rem; }
+footer .gh { display: inline-flex; color: var(--muted); }
+footer .gh:hover { color: var(--accent); text-decoration: none; }
+footer .gh svg { display: block; }
 
 @media (prefers-color-scheme: light) {
   :root {
