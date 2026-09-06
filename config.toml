@@ -2,7 +2,7 @@
 # Build: `zola build`  (outputs ./public; commit that to gh-pages branch or
 # deploy via GitHub Actions: peaceiris/actions-gh-pages).
 
-base_url = "https://amr8t.github.io/arkelstore/"
+base_url = "https://amr8t.github.io/arkel-site/"
 title = "Arkel"
 description = "Decentralized erasure-coded storage network"
 generate_feeds = false
