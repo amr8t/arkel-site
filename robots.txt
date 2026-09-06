@@ -1,4 +1,4 @@
 User-agent: *
 Disallow:
 Allow: /
-Sitemap: https://amr8t.github.io/arkel-site/sitemap.xml
+Sitemap: https://amr8t.github.io/arkel/sitemap.xml
