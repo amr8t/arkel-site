@@ -6,8 +6,6 @@ title = "Arkel"
 
 Arkel is a community platform for object storage. Node operators contribute storage in exchange for credit (USDC) and users can pay to use object storage. Arkel aims to be community driven as opposed to cloud providers that are purely profit driven.
 
-More details on technical architecture coming soon. Checkout the [SourceCode](https://github.com/amr8t/arkelstore): 
-
 ## Get started
 
 ### As an operator
