@@ -4,13 +4,29 @@ title = "Arkel"
 
 # Arkel
 
-Arkel is a community platform for object storage. Node operators contribute storage in exchange for credit (USDC) and users can pay to use object storage. Arkel aims to be community driven as opposed to cloud providers that are purely profit driven.
+Arkel aims to be a community driven alternative to Cloud providers. Node operators contribute storage in exchange for credit and users can pay to use object storage.
+
+Why use Arkel when alternatives like S3, R2, B2 exist? We think there are many reasons:
+
+- Cloud providers are geared towards enterprises as that's where most of the profit is.
+- These result in features and incentives that benefit from massive expansion, owning the entire stack, etc.
+- Arkel is a fresh take at the same problem, initially geared to supplement self hosting usecases.
+
+Examples of where Arkel would shine:
+
+- Easy remote backups for your self hosting servers.
+- Media offload service, think Immich, Mastodon media, Forum attachments etc
+- Avoid Vendor Dependence, Not just major outages, but suprise/hidden charges, unethical practices etc
+- A Second life of old storage hardware that's not being used
+- Community and friends, help each other out.
+
+Currently the project is in early Alpha with contribution and usage possible. Checkout the See [Roadmap](/roadmap/).
 
 ## Get started
 
 ### As an operator
 
-Run a **storage node** — contribute disk, get quota:
+Run a **storage node** to contribute disk, get quota:
 
 ```sh
 arkel storage \

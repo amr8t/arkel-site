@@ -4,75 +4,45 @@ title = "CLI reference"
 
 # CLI reference
 
-> Auto-generated from the clap definitions (`examples/gen_cli_docs.rs`, run via
-> `./scripts/gen_cli_docs.sh`). The `index` subcommand is maintainer-only and
-> omitted. Do not hand-edit the generated sections below.
-
-Global flag: `--data-dir <path>` (dedicated directory for this node's identity
-and storage state). Defaults to `./.arkel_<mode>_data`.
+<!-- Auto-generated from the clap definitions (examples/gen_cli_docs.rs, run via
+./scripts/gen_cli_docs.sh). The `index` subcommand is maintainer-only and
+omitted. Do not hand-edit the generated sections below. -->
 
 Default index cluster: `http://127.0.0.1:8001,http://127.0.0.1:8002,http://127.0.0.1:8003`.
 
-# Command-Line Help for `arkel`
+That is the default `--index-addrs` for the `client`, `account`, `payment`,
+`repair`, and `storage` commands (and the `[storage] index_addrs` key in
+`arkel-node.toml`).
 
-This document contains the help content for the `arkel` command-line program.
+## Overview
 
-**Command Overview:**
+#### **Index:**
 
-* [`arkel`↴](#arkel)
-* [`arkel storage`↴](#arkel-storage)
-* [`arkel client`↴](#arkel-client)
-* [`arkel client put`↴](#arkel-client-put)
-* [`arkel client get`↴](#arkel-client-get)
-* [`arkel client rm`↴](#arkel-client-rm)
-* [`arkel account`↴](#arkel-account)
-* [`arkel account quota`↴](#arkel-account-quota)
-* [`arkel payment`↴](#arkel-payment)
-* [`arkel payment register`↴](#arkel-payment-register)
-* [`arkel payment credit`↴](#arkel-payment-credit)
-* [`arkel payment set-default-quota`↴](#arkel-payment-set-default-quota)
-* [`arkel repair`↴](#arkel-repair)
-
-## `arkel`
+* [Using Arkel](#using-arkel)
+* [Running a storage node](#running-a-storage-node)
+* [Operating the network](#operating-the-network)
 
 Arkel Distributed Blob Index & Storage Node
 
 **Usage:** `arkel [OPTIONS] <COMMAND>`
 
-###### **Subcommands:**
+#### **Subcommands:**
 
-* `storage` — Boot up as a high-throughput raw block storage endpoint
-* `client` — Upload/download objects as an iroh-native client
-* `account` — Account & quota tools
-* `payment` — Payment-operator tooling (register the quota credit key; first-wins)
-* `repair` — Heal objects below target k/m (standalone, idempotent; run by cron)
+* [`storage`](#arkel-storage) — Boot up as a high-throughput raw block storage endpoint
+* [`client`](#arkel-client) — Upload/download objects as an iroh-native client
+* [`account`](#arkel-account) — Account & quota tools
+* [`payment`](#arkel-payment) — Payment-operator tooling (register the quota credit key; first-wins)
+* [`repair`](#arkel-repair) — Heal objects below target k/m (standalone, idempotent; run by cron)
 
-###### **Options:**
+#### **Options:**
 
 * `--data-dir <DATA_DIR>` — Dedicated data directory for this specific node's cryptographic identities and storage state
 * `--config <CONFIG>` — Node config file (arkel-node.toml); command-line flags override it
 
 
+## Using Arkel
 
-## `arkel storage`
-
-Boot up as a high-throughput raw block storage endpoint
-
-**Usage:** `arkel storage [OPTIONS]`
-
-###### **Options:**
-
-* `--private-relay-url <PRIVATE_RELAY_URL>` — Optional private Iroh relay architecture URL override
-* `--index-addrs <INDEX_ADDRS>` — Index node HTTP URLs to register against (comma-separated; the registrar discovers the current Raft leader among them)
-* `--addr <ADDR>` — Address the iroh QUIC endpoint binds to
-* `--advertise-addr <ADVERTISE_ADDR>` — Address advertised for registration (defaults to --addr)
-* `--gc-interval-secs <GC_INTERVAL_SECS>` — How often to scan and delete unreferenced shards (seconds)
-* `--capacity <CAPACITY>` — Storage allocation this node commits to the network; the index fills it and pays against real stored bytes (default 1TB)
-
-
-
-## `arkel client`
-
+### `arkel client`
 Upload/download objects as an iroh-native client
 
 **Usage:** `arkel client <COMMAND>`
@@ -83,10 +53,7 @@ Upload/download objects as an iroh-native client
 * `get` — Download an object and write it to a file (or stdout)
 * `rm` — Delete an object (removes its manifest via Raft; shards freed by GC)
 
-
-
-## `arkel client put`
-
+### `arkel client put`
 Upload a file (EC + encrypt locally, shards to storage nodes, manifest via Raft)
 
 **Usage:** `arkel client put [OPTIONS] <FILE>`
@@ -106,10 +73,7 @@ Upload a file (EC + encrypt locally, shards to storage nodes, manifest via Raft)
   Default value: `http://127.0.0.1:8001,http://127.0.0.1:8002,http://127.0.0.1:8003`
 * `--storage-addrs <STORAGE_ADDRS>` — Storage nodes to distribute shards to, as pubkey@ip:port (comma-separated)
 
-
-
-## `arkel client get`
-
+### `arkel client get`
 Download an object and write it to a file (or stdout)
 
 **Usage:** `arkel client get [OPTIONS] <BUCKET> <KEY>`
@@ -127,10 +91,7 @@ Download an object and write it to a file (or stdout)
 * `--storage-addrs <STORAGE_ADDRS>` — Storage nodes that may hold shards, as pubkey@ip:port (comma-separated)
 * `--output <OUTPUT>`
 
-
-
-## `arkel client rm`
-
+### `arkel client rm`
 Delete an object (removes its manifest via Raft; shards freed by GC)
 
 **Usage:** `arkel client rm [OPTIONS] <BUCKET> <KEY>`
@@ -146,10 +107,7 @@ Delete an object (removes its manifest via Raft; shards freed by GC)
 
   Default value: `http://127.0.0.1:8001,http://127.0.0.1:8002,http://127.0.0.1:8003`
 
-
-
-## `arkel account`
-
+### `arkel account`
 Account & quota tools
 
 **Usage:** `arkel account <COMMAND>`
@@ -158,10 +116,7 @@ Account & quota tools
 
 * `quota` — Show quota and usage for an account (default: this identity)
 
-
-
-## `arkel account quota`
-
+### `arkel account quota`
 Show quota and usage for an account (default: this identity)
 
 **Usage:** `arkel account quota [OPTIONS]`
@@ -173,10 +128,25 @@ Show quota and usage for an account (default: this identity)
 
   Default value: `http://127.0.0.1:8001,http://127.0.0.1:8002,http://127.0.0.1:8003`
 
+## Running a storage node
 
+### `arkel storage`
+Boot up as a high-throughput raw block storage endpoint
 
-## `arkel payment`
+**Usage:** `arkel storage [OPTIONS]`
 
+###### **Options:**
+
+* `--private-relay-url <PRIVATE_RELAY_URL>` — Optional private Iroh relay architecture URL override
+* `--index-addrs <INDEX_ADDRS>` — Index node HTTP URLs to register against (comma-separated; the registrar discovers the current Raft leader among them)
+* `--addr <ADDR>` — Address the iroh QUIC endpoint binds to
+* `--advertise-addr <ADVERTISE_ADDR>` — Address advertised for registration (defaults to --addr)
+* `--gc-interval-secs <GC_INTERVAL_SECS>` — How often to scan and delete unreferenced shards (seconds)
+* `--capacity <CAPACITY>` — Storage allocation this node commits to the network; the index fills it and pays against real stored bytes (default 1TB)
+
+## Operating the network
+
+### `arkel payment`
 Payment-operator tooling (register the quota credit key; first-wins)
 
 **Usage:** `arkel payment <COMMAND>`
@@ -187,10 +157,7 @@ Payment-operator tooling (register the quota credit key; first-wins)
 * `credit` — Credit quota to an account (idempotent on --ref-id)
 * `set-default-quota` — Set the cluster-wide default quota for accounts with no quota row yet (applies at first use; idempotent upsert, changeable)
 
-
-
-## `arkel payment register`
-
+### `arkel payment register`
 Register this identity as the payment operator (one-time, first-wins)
 
 **Usage:** `arkel payment register [OPTIONS]`
@@ -201,10 +168,7 @@ Register this identity as the payment operator (one-time, first-wins)
 
   Default value: `http://127.0.0.1:8001,http://127.0.0.1:8002,http://127.0.0.1:8003`
 
-
-
-## `arkel payment credit`
-
+### `arkel payment credit`
 Credit quota to an account (idempotent on --ref-id)
 
 **Usage:** `arkel payment credit [OPTIONS] --account <ACCOUNT> --bytes <BYTES> --ref-id <REF_ID>`
@@ -221,10 +185,7 @@ Credit quota to an account (idempotent on --ref-id)
 
   Default value: `http://127.0.0.1:8001,http://127.0.0.1:8002,http://127.0.0.1:8003`
 
-
-
-## `arkel payment set-default-quota`
-
+### `arkel payment set-default-quota`
 Set the cluster-wide default quota for accounts with no quota row yet (applies at first use; idempotent upsert, changeable)
 
 **Usage:** `arkel payment set-default-quota [OPTIONS] --bytes <BYTES>`
@@ -236,10 +197,7 @@ Set the cluster-wide default quota for accounts with no quota row yet (applies a
 
   Default value: `http://127.0.0.1:8001,http://127.0.0.1:8002,http://127.0.0.1:8003`
 
-
-
-## `arkel repair`
-
+### `arkel repair`
 Heal objects below target k/m (standalone, idempotent; run by cron)
 
 **Usage:** `arkel repair [OPTIONS]`
@@ -260,12 +218,4 @@ Heal objects below target k/m (standalone, idempotent; run by cron)
 
   Default value: `600`
 
-
-
-<hr/>
-
-<small><i>
-    This document was generated automatically by
-    <a href="https://crates.io/crates/clap-markdown"><code>clap-markdown</code></a>.
-</i></small>
 
