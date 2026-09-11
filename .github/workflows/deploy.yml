@@ -1,6 +1,6 @@
 name: Deploy site
 
-# Build the Zola site and publish it to the gh-pages branch
+# Build the VitePress site and publish it to the gh-pages branch
 # (repo must have Pages → Deploy from a branch → gh-pages).
 
 on:
@@ -15,9 +15,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: taiki-e/install-action@zola
-      - run: zola build
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm ci
+      - run: npm run docs:build
       - uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: public
+          publish_dir: docs/.vitepress/dist

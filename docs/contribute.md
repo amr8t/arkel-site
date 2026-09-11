@@ -1,7 +1,7 @@
-+++
-title = "Contribute to the network"
-+++
+# Contribute
 
+There are two ways to take part in the network: run a node as an operator, or
+buy credits as a user.
 
 ## 1. As an operator — run a storage node
 
@@ -23,8 +23,8 @@ arkel storage \
 Erasure coding means the network survives node failures — your node just stores
 encrypted shards, and no single node holds your data in the clear.
 
-> **Planned** get credited for contributing storage to the network
+> **Planned:** get credited for contributing storage to the network.
 
 ## 2. As a user — buy credits
 
-> **Planned** `buy credits for increasing usage limits.
+> **Planned:** buy credits for increasing usage limits.

@@ -1,10 +1,10 @@
-+++
-title = "CLI reference"
-+++
+---
+title: CLI reference
+---
 
 # CLI reference
 
-<!-- Auto-generated from the clap definitions (examples/gen_cli_docs.rs, run via
+<!-- Auto-generated from the clap definitions (scripts/gen_cli_docs.rs, run via
 ./scripts/gen_cli_docs.sh). The `index` subcommand is maintainer-only and
 omitted. Do not hand-edit the generated sections below. -->
 
@@ -12,11 +12,11 @@ Default index cluster: `http://127.0.0.1:8001,http://127.0.0.1:8002,http://127.0
 
 That is the default `--index-addrs` for the `client`, `account`, `payment`,
 `repair`, and `storage` commands (and the `[storage] index_addrs` key in
-`arkel-node.toml`).
+`arkel-node.toml`) — point those at the index cluster you run.
 
 ## Overview
 
-#### **Index:**
+###### **Index:**
 
 * [Using Arkel](#using-arkel)
 * [Running a storage node](#running-a-storage-node)
@@ -26,7 +26,7 @@ Arkel Distributed Blob Index & Storage Node
 
 **Usage:** `arkel [OPTIONS] <COMMAND>`
 
-#### **Subcommands:**
+###### **Subcommands:**
 
 * [`storage`](#arkel-storage) — Boot up as a high-throughput raw block storage endpoint
 * [`client`](#arkel-client) — Upload/download objects as an iroh-native client
@@ -34,7 +34,7 @@ Arkel Distributed Blob Index & Storage Node
 * [`payment`](#arkel-payment) — Payment-operator tooling (register the quota credit key; first-wins)
 * [`repair`](#arkel-repair) — Heal objects below target k/m (standalone, idempotent; run by cron)
 
-#### **Options:**
+###### **Options:**
 
 * `--data-dir <DATA_DIR>` — Dedicated data directory for this specific node's cryptographic identities and storage state
 * `--config <CONFIG>` — Node config file (arkel-node.toml); command-line flags override it

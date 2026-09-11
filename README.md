@@ -1,31 +1,35 @@
 # Arkel website
 
-Plain [Zola](https://www.getzola.org/) static site, gh-pages-ready. This repo
-is the site only — the arkel source lives in `../arkel` (or `amr8t/arkelstore`).
+[VitePress](https://vitepress.dev/) static docs site for Arkel, published to
+GitHub Pages. This repo is the site only — the arkel source lives in
+`../arkel` (or `amr8t/arkelstore`).
 
-## Edit & build locally
+## Dev & build
 
 ```sh
-zola serve   # live preview at http://127.0.0.1:1111
-zola build   # outputs ./public (gitignored)
+npm install
+npm run docs:dev      # live preview at http://localhost:5173/arkel-site/
+npm run docs:build    # outputs docs/.vitepress/dist
+npm run docs:preview  # preview the production build
 ```
 
-Pages are Markdown in `content/`. Templates in `templates/`, styling in
-`static/style.css`. Nothing to configure — content is the site.
+Content lives in `docs/`. Sidebar/nav/search live in
+`docs/.vitepress/config.mts`. Styling can be layered via a custom theme in
+`docs/.vitepress/theme`.
 
 ## Deploy
 
 Pushing to `master` runs `.github/workflows/deploy.yml`, which builds and
-publishes `./public` to the `gh-pages` branch (GitHub Pages →
+publishes `docs/.vitepress/dist` to the `gh-pages` branch (GitHub Pages →
 "Deploy from a branch" → `gh-pages`). Live at:
 https://amr8t.github.io/arkel-site/
 
 ## Auto-generated CLI reference
 
-`content/cli.md` is generated from the arkel CLI's clap definitions and is not
+`docs/cli.md` is generated from the arkel CLI's clap definitions and is not
 hand-edited. Regenerate it from the arkel checkout:
 
 ```sh
 cd ../arkel
-./scripts/gen_cli_docs.sh   # writes ../arkel-site/content/cli.md
+./scripts/gen_cli_docs.sh   # writes ../arkel-site/docs/cli.md
 ```
