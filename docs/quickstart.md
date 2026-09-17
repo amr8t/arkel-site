@@ -1,13 +1,20 @@
 # Quick start
 
-Build from source, run a node, and put/get your first object.
+Install Arkel, run a node, and put/get your first object.
 
-## Build
+## Install
+
+```sh
+curl -fsSL https://amr8t.github.io/arkel-site/install.sh | sh
+arkel --help
+```
+
+## Build from source
 
 ```sh
 git clone https://github.com/amr8t/arkelstore && cd arkelstore
-cargo build --release
-./target/release/arkel --help
+cargo build
+./target/debug/arkel --help
 ```
 
 ## As an operator

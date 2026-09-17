@@ -45,7 +45,10 @@ export default defineConfig({
       },
       {
         text: 'Reference',
-        items: [{ text: 'CLI reference', link: '/cli' }],
+        items: [
+          { text: 'CLI reference', link: '/cli' },
+          { text: 'Configuration', link: '/config' },
+        ],
       },
       {
         text: 'Community',

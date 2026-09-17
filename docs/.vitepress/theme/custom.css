@@ -31,3 +31,39 @@
     column-gap: 112px;
   }
 }
+
+:root {
+  --vp-nav-logo-height: 40px;
+  --vp-c-brand-1: #a15c1e;
+  --vp-c-brand-2: #b5651d;
+  --vp-c-brand-3: #c47a2e;
+  --vp-c-brand-soft: rgba(161, 92, 30, 0.14);
+
+  --vp-home-hero-name-color: #47250c;
+  --vp-button-brand-bg: #47250c;
+  --vp-button-brand-hover-bg: #5c3317;
+  --vp-button-brand-active-bg: #351b08;
+}
+
+.dark {
+  --vp-c-brand-1: #c39968;
+  --vp-c-brand-2: #d8b184;
+  --vp-c-brand-3: #8a5a2a;
+  --vp-c-brand-soft: rgba(195, 153, 104, 0.16);
+
+  --vp-button-brand-bg: #6b3d1a;
+  --vp-button-brand-hover-bg: #7d4a22;
+  --vp-button-brand-active-bg: #47250c;
+}
+
+.vp-doc img[src*="arkel-architecture"] {
+  background: #fbf7f0;
+  border-radius: 8px;
+  padding: 12px;
+  box-sizing: border-box;
+}
+
+.VPFeatures .items .VPFeature {
+  border: 1px solid var(--vp-c-default-3);
+  background-color: var(--vp-c-default-3);
+}

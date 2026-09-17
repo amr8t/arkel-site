@@ -30,7 +30,7 @@ several reasons:
   parity shards, spread across independent storage nodes. The network survives
   losing up to `m` nodes.
 - **Distributed metadata** — a Raft cluster of index nodes owns the global
-  catalog: buckets, objects, ownership, and quotas. No single company controls
+  metadata: buckets, objects, ownership, and quotas. No single company controls
   the index.
 - **An economy** — accounts hold quota, storage operators earn contribution
   grants, and a payment operator credits accounts.
