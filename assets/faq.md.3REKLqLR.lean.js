@@ -1,0 +1,1 @@
+import{_ as a,o,c as r,a2 as t}from"./chunks/framework.6vsupRmR.js";const p=JSON.parse('{"title":"FAQ","description":"","frontmatter":{},"headers":[],"relativePath":"faq.md","filePath":"faq.md"}'),n={name:"faq.md"};function s(i,e,d,l,c,h){return o(),r("div",null,[...e[0]||(e[0]=[t("",19)])])}const y=a(n,[["render",s]]);export{p as __pageData,y as default};
