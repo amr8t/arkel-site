@@ -9,18 +9,7 @@ Running a storage node contributes its disk to the network. It registers with
 the index, stores encrypted shards for others, and a background GC loop frees
 shards that are no longer referenced.
 
-```sh
-arkel storage \
-  --addr 0.0.0.0:9001 \
-  --advertise-addr <your-public-ip>:9001 \
-  --index-addrs http://index.pc1.arkeldata.com:8001 \
-  --data-dir /var/lib/arkel/storage
-```
-
-- `--addr` — the QUIC endpoint to bind (default `127.0.0.1:9001`)
-- `--advertise-addr` — the address clients use to reach you (defaults to `--addr`; set your public IP)
-- `--index-addrs` — the public index cluster
-- Identity is auto-generated on first boot into `--data-dir/identity.key`.
+<!--@include: ./snippets/storage-node.md-->
 
 Erasure coding means the network survives node failures — your node just stores
 encrypted shards, and no single node holds your data in the clear.

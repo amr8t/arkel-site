@@ -17,22 +17,9 @@ cargo build
 ./target/debug/arkel --help
 ```
 
-## As an operator
+## As an operator — run a storage node
 
-Run a **storage node** to contribute disk and get quota:
-
-```sh
-arkel storage \
-  --addr 0.0.0.0:9001 \
-  --advertise-addr <your-public-ip>:9001 \
-  --index-addrs http://index.pc1.arkeldata.com:8001 \
-  --data-dir /var/lib/arkel/storage
-```
-
-- `--addr` — the QUIC endpoint to bind (default `127.0.0.1:9001`)
-- `--advertise-addr` — the address clients use to reach you (defaults to `--addr`; set your public IP)
-- `--index-addrs` — the public index cluster
-- Identity is auto-generated on first boot into `--data-dir/identity.key`.
+<!--@include: ./snippets/storage-node.md-->
 
 Run an **index node** (part of the Raft metadata quorum):
 
