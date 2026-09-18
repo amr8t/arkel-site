@@ -12,12 +12,14 @@ shards that are no longer referenced.
 ```sh
 arkel storage \
   --addr 0.0.0.0:9001 \
-  --index-addrs http://index.example:8001 \
+  --advertise-addr <your-public-ip>:9001 \
+  --index-addrs http://index.pc1.arkeldata.com:8001 \
   --data-dir /var/lib/arkel/storage
 ```
 
 - `--addr` — the QUIC endpoint to bind (default `127.0.0.1:9001`)
-- `--index-addrs` — index node URLs to register against
+- `--advertise-addr` — the address clients use to reach you (defaults to `--addr`; set your public IP)
+- `--index-addrs` — the public index cluster
 - Identity is auto-generated on first boot into `--data-dir/identity.key`.
 
 Erasure coding means the network survives node failures — your node just stores

@@ -52,13 +52,11 @@ peers = [
 # --- storage node ---
 [storage]
 addr = "0.0.0.0:9001"
+advertise_addr = "<your-public-ip>:9001"
 data_dir = "/var/lib/arkel/storage-9001"
 index_addrs = [
-  "http://10.0.0.11:8001",
-  "http://10.0.0.12:8001",
-  "http://10.0.0.13:8001",
+  "http://index.pc1.arkeldata.com:8001",  # public index cluster
 ]
-# advertise_addr = "1.2.3.4:9001"
 # gc_interval_secs = 3600
 ```
 
