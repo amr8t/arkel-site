@@ -5,10 +5,10 @@ export default defineConfig({
   description: 'Community Owned Object Storage',
   lang: 'en-US',
   cleanUrls: true,
-  base: '/arkel-site/',
+  base: '/',
 
   head: [
-    ['link', { rel: 'icon', href: '/arkel-site/favicon.svg', type: 'image/svg+xml' }],
+    ['link', { rel: 'icon', href: '/favicon.svg', type: 'image/svg+xml' }],
   ],
 
   themeConfig: {
@@ -54,7 +54,7 @@ export default defineConfig({
         text: 'Community',
         items: [
           { text: 'Discord', link: 'https://discord.gg/f4pBspUqy' },
-          { text: 'GitHub', link: 'arkeldata.com' },
+          { text: 'GitHub', link: 'https://github.com/amr8t/arkelstore' },
         ],
       },
     ],

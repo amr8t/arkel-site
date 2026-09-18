@@ -8,7 +8,7 @@ GitHub Pages. This repo is the site only — the arkel source lives in
 
 ```sh
 npm install
-npm run docs:dev      # live preview at http://localhost:5173/arkel-site/
+npm run docs:dev      # live preview at http://localhost:5173/
 npm run docs:build    # outputs docs/.vitepress/dist
 npm run docs:preview  # preview the production build
 ```
