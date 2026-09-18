@@ -5,14 +5,14 @@ Install Arkel, run a node, and put/get your first object.
 ## Install
 
 ```sh
-curl -fsSL https://amr8t.github.io/arkel-site/install.sh | sh
+curl -fsSL https://arkeldata.com/install.sh | sh
 arkel --help
 ```
 
 ## Build from source
 
 ```sh
-git clone https://github.com/amr8t/arkelstore && cd arkelstore
+git clone https://github.com/amr8t/arkel && cd arkel
 cargo build
 ./target/debug/arkel --help
 ```
@@ -53,8 +53,5 @@ arkel client get media holidays/1.jpg --output photo.jpg
 arkel client rm media holidays/1.jpg
 ```
 
-Erasure coding means the network survives node failures — no single node holds
-your data in the clear, and your data is encrypted before it leaves your
-machine.
 
 See the [CLI reference](/cli) for the full command surface.

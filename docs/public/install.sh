@@ -1,11 +1,11 @@
 #!/bin/sh
 # Install the latest Arkel release binary.
 #
-#   curl -fsSL https://amr8t.github.io/arkel-site/install.sh | sh
+#   curl -fsSL https://arkeldata.com/install.sh | sh
 #
 set -eu
 
-REPO="amr8t/arkelstore"
+REPO="amr8t/arkel"
 BIN="arkel"
 
 os=$(uname -s | tr '[:upper:]' '[:lower:]')

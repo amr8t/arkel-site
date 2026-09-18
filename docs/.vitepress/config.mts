@@ -54,7 +54,7 @@ export default defineConfig({
         text: 'Community',
         items: [
           { text: 'Discord', link: 'https://discord.gg/f4pBspUqy' },
-          { text: 'GitHub', link: 'https://github.com/amr8t/arkelstore' },
+          { text: 'GitHub', link: 'arkeldata.com' },
         ],
       },
     ],
@@ -75,6 +75,6 @@ export default defineConfig({
       copyright: 'Copyright © 2026 Arkel',
     },
 
-    socialLinks: [{ icon: 'github', link: 'https://github.com/amr8t/arkelstore' }],
+    socialLinks: [{ icon: 'github', link: 'https://github.com/amr8t/arkel' }],
   },
 })

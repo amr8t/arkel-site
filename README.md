@@ -2,7 +2,7 @@
 
 [VitePress](https://vitepress.dev/) static docs site for Arkel, published to
 GitHub Pages. This repo is the site only — the arkel source lives in
-`../arkel` (or `amr8t/arkelstore`).
+`../arkel` (or `amr8t/arkel`).
 
 ## Dev & build
 
@@ -22,7 +22,7 @@ Content lives in `docs/`. Sidebar/nav/search live in
 Pushing to `master` runs `.github/workflows/deploy.yml`, which builds and
 publishes `docs/.vitepress/dist` to the `gh-pages` branch (GitHub Pages →
 "Deploy from a branch" → `gh-pages`). Live at:
-https://amr8t.github.io/arkel-site/
+https://arkeldata.com
 
 ## Auto-generated CLI reference
 
