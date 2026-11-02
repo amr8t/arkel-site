@@ -11,10 +11,15 @@ shards that are no longer referenced.
 
 <!--@include: ./snippets/storage-node.md-->
 
+> **Tip:** run your storage node and your client with the same `--data-dir` so
+> both share one identity — the earned storage capacity is credited to that identity.
+
 Erasure coding means the network survives node failures — your node just stores
 encrypted shards, and no single node holds your data in the clear.
 
-> **Planned:** get credited for contributing storage to the network.
+> Operators earn **1/3 of their contributed capacity** back as storage capacity, capped at **50 GB**.
+>
+> **Planned:** get paid in money for contributed capacity once payment rails are in.
 
 ## 2. As a user — buy credits
 

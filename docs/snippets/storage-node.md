@@ -19,7 +19,8 @@ edit `arkel-node.toml`, then `docker compose up -d`.
 - Identity is auto-generated on first boot into the `arkel-data` volume.
 - Needs inbound **UDP 9001** reachable for direct connections; otherwise iroh
   falls back to a relay.
-- `capacity` is the disk you commit; the index fills it and pays against stored bytes.
+- `capacity` is the disk you commit; you earn **1/3 of it** back as storage
+  capacity, capped at **50 GB**. E.g. 500 GB → 50 GB (capped), 15 GB → 5 GB.
 
 <details>
 <summary>Binary / systemd alternative</summary>
