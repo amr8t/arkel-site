@@ -14,7 +14,7 @@ hero:
       link: /quickstart
     - theme: alt
       text: Community
-      link: https://discord.gg/f4pBspUqy
+      link: https://discord.gg/48UAaYPJM
     - theme: alt
       text: Read the docs
       link: /introduction

@@ -46,6 +46,6 @@ arkel client rm media holidays/1.jpg --index-addrs "$INDEX"
 ```
 
 > **Note:** During beta test, limited quota is available. Reach out on the
-> [Discord channel](https://discord.gg/f4pBspUqy) for more quota.
+> [Discord channel](https://discord.gg/48UAaYPJM) for more quota.
 
 See the [CLI reference](/cli) for the full command surface.

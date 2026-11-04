@@ -19,7 +19,7 @@ export default defineConfig({
       { text: 'Quick start', link: '/quickstart' },
       { text: 'CLI', link: '/cli' },
       { text: 'Roadmap', link: '/roadmap' },
-      { text: 'Discord', link: 'https://discord.gg/f4pBspUqy' },
+      { text: 'Discord', link: 'https://discord.gg/48UAaYPJM' },
     ],
 
     sidebar: [
@@ -53,7 +53,7 @@ export default defineConfig({
       {
         text: 'Community',
         items: [
-          { text: 'Discord', link: 'https://discord.gg/f4pBspUqy' },
+          { text: 'Discord', link: 'https://discord.gg/48UAaYPJM' },
           { text: 'GitHub', link: 'https://github.com/amr8t/arkelstore' },
         ],
       },
