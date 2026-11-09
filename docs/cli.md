@@ -10,7 +10,7 @@ omitted. Do not hand-edit the generated sections below. -->
 
 Default index cluster: `http://127.0.0.1:8001,http://127.0.0.1:8002,http://127.0.0.1:8003`.
 
-That is the default `--index-addrs` for the `client`, `account`, `payment`,
+That is the default `--index-addrs` for the `client`, `quota`, `payment`,
 `repair`, and `storage` commands (and the `[storage] index_addrs` key in
 `arkel-node.toml`) — point those at the index cluster you run.
 
@@ -30,9 +30,10 @@ Arkel Distributed Blob Index & Storage Node
 
 * [`storage`](#arkel-storage) — Boot up as a high-throughput raw block storage endpoint
 * [`client`](#arkel-client) — Upload/download objects as an iroh-native client
-* [`account`](#arkel-account) — Account & quota tools
+* [`quota`](#arkel-quota) — Show quota and usage for an identity (default: this node's identity)
 * [`payment`](#arkel-payment) — Payment-operator tooling (register the quota credit key; first-wins)
 * [`repair`](#arkel-repair) — Heal objects below target k/m (standalone, idempotent; run by cron)
+* [`identity`](#arkel-identity) — Print this node's identity (hex pubkey, data dir, key path)
 
 ###### **Options:**
 
@@ -107,23 +108,14 @@ Delete an object (removes its manifest via Raft; shards freed by GC)
 
   Default value: `http://127.0.0.1:8001,http://127.0.0.1:8002,http://127.0.0.1:8003`
 
-### `arkel account`
-Account & quota tools
+### `arkel quota`
+Show quota and usage for an identity (default: this node's identity)
 
-**Usage:** `arkel account <COMMAND>`
-
-###### **Subcommands:**
-
-* `quota` — Show quota and usage for an account (default: this identity)
-
-### `arkel account quota`
-Show quota and usage for an account (default: this identity)
-
-**Usage:** `arkel account quota [OPTIONS]`
+**Usage:** `arkel quota [OPTIONS]`
 
 ###### **Options:**
 
-* `--account <ACCOUNT>` — Account (hex iroh pubkey); defaults to this node's identity
+* `--identity <IDENTITY>` — Identity (hex iroh pubkey) to query; defaults to this node's identity
 * `--index-addrs <INDEX_ADDRS>` — Index node HTTP URLs (comma-separated)
 
   Default value: `http://127.0.0.1:8001,http://127.0.0.1:8002,http://127.0.0.1:8003`
@@ -143,6 +135,7 @@ Boot up as a high-throughput raw block storage endpoint
 * `--advertise-addr <ADVERTISE_ADDR>` — Address advertised for registration (defaults to --addr)
 * `--gc-interval-secs <GC_INTERVAL_SECS>` — How often to scan and delete unreferenced shards (seconds)
 * `--capacity <CAPACITY>` — Storage allocation this node commits to the network; the index fills it and pays against real stored bytes (default 1TB)
+* `--earn-to <EARN_TO>` — Identity (hex pubkey) to credit this node's contribution grant to (default: the node's own identity)
 
 ## Operating the network
 
@@ -154,8 +147,8 @@ Payment-operator tooling (register the quota credit key; first-wins)
 ###### **Subcommands:**
 
 * `register` — Register this identity as the payment operator (one-time, first-wins)
-* `credit` — Credit quota to an account (idempotent on --ref-id)
-* `set-default-quota` — Set the cluster-wide default quota for accounts with no quota row yet (applies at first use; idempotent upsert, changeable)
+* `credit` — Credit quota to an identity (idempotent on --ref-id)
+* `set-default-quota` — Set the cluster-wide default quota for identities with no quota row yet (applies at first use; idempotent upsert, changeable)
 
 ### `arkel payment register`
 Register this identity as the payment operator (one-time, first-wins)
@@ -169,14 +162,14 @@ Register this identity as the payment operator (one-time, first-wins)
   Default value: `http://127.0.0.1:8001,http://127.0.0.1:8002,http://127.0.0.1:8003`
 
 ### `arkel payment credit`
-Credit quota to an account (idempotent on --ref-id)
+Credit quota to an identity (idempotent on --ref-id)
 
-**Usage:** `arkel payment credit [OPTIONS] --account <ACCOUNT> --bytes <BYTES> --ref-id <REF_ID>`
+**Usage:** `arkel payment credit [OPTIONS] --to <TO> --bytes <BYTES> --ref-id <REF_ID>`
 
 ###### **Options:**
 
-* `--account <ACCOUNT>` — Account (hex iroh pubkey) to credit
-* `--bytes <BYTES>` — Bytes of quota to add
+* `--to <TO>` — Identity (hex iroh pubkey) to credit
+* `--bytes <BYTES>` — Quota to add, e.g. "1GB" / "500MB" (or raw bytes)
 * `--source <SOURCE>` — Credit source label (e.g. 'payment')
 
   Default value: `payment`
@@ -186,7 +179,7 @@ Credit quota to an account (idempotent on --ref-id)
   Default value: `http://127.0.0.1:8001,http://127.0.0.1:8002,http://127.0.0.1:8003`
 
 ### `arkel payment set-default-quota`
-Set the cluster-wide default quota for accounts with no quota row yet (applies at first use; idempotent upsert, changeable)
+Set the cluster-wide default quota for identities with no quota row yet (applies at first use; idempotent upsert, changeable)
 
 **Usage:** `arkel payment set-default-quota [OPTIONS] --bytes <BYTES>`
 

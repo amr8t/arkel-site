@@ -1,5 +1,12 @@
-The easiest way is one command (swap in your public IP and the disk you're
-committing):
+First, get your identity — your storage earnings are credited to it:
+
+```sh
+arkel identity
+# prints: identity: <your-identity>
+```
+
+Then run the node (swap in your public IP, the disk you're committing, and the
+identity from above):
 
 ```sh
 docker run -d --name arkel-storage --restart unless-stopped --network host \
@@ -9,14 +16,17 @@ docker run -d --name arkel-storage --restart unless-stopped --network host \
   --advertise-addr <your-public-ip>:9001 \
   --index-addrs http://index.pc1.arkeldata.com:8001 \
   --data-dir /var/lib/arkel/storage-9001 \
+  --earn-to <your-identity> \
   --capacity 50GB
 ```
 
 Prefer Compose? Use the ready-made files in
 [`examples/storage-node/`](https://github.com/amr8t/arkel/tree/master/examples/storage-node):
-edit `arkel-node.toml`, then `docker compose up -d`.
+set `earn_to = "<your-identity>"` in `arkel-node.toml`, then
+`docker compose up -d`.
 
-- Identity is auto-generated on first boot into the `arkel-data` volume.
+- A **storage-node** identity is auto-generated on first boot into the
+  `arkel-data` volume; `--earn-to` links its earnings to your identity above.
 - Needs inbound **UDP 9001** reachable for direct connections; otherwise iroh
   falls back to a relay.
 - `capacity` is the disk you commit; you earn **1/3 of it** back as storage
@@ -30,7 +40,8 @@ arkel storage \
   --addr 0.0.0.0:9001 \
   --advertise-addr <your-public-ip>:9001 \
   --index-addrs http://index.pc1.arkeldata.com:8001 \
-  --data-dir /var/lib/arkel/storage
+  --data-dir /var/lib/arkel/storage \
+  --earn-to <your-identity>
 ```
 
 </details>

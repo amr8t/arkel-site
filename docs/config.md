@@ -71,4 +71,5 @@ A node's identity is an iroh keypair generated on first boot and persisted in
 its `data_dir` (`identity.key`). The node's network address and Raft ID derive
 from it, so keep it stable and back it up.
 
-See the [CLI reference](/cli) for the full flag surface.
+See the [Identity](/identity) page for the different identities and how to link
+a storage node's earnings to your account.

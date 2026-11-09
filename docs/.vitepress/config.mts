@@ -48,6 +48,7 @@ export default defineConfig({
         items: [
           { text: 'CLI reference', link: '/cli' },
           { text: 'Configuration', link: '/config' },
+          { text: 'Identity', link: '/identity' },
         ],
       },
       {
