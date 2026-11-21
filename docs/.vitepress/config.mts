@@ -47,6 +47,7 @@ export default defineConfig({
         text: 'Reference',
         items: [
           { text: 'CLI reference', link: '/cli' },
+          { text: 'S3 gateway', link: '/s3' },
           { text: 'Configuration', link: '/config' },
           { text: 'Identity', link: '/identity' },
         ],

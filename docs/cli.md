@@ -33,6 +33,7 @@ Arkel Distributed Blob Index & Storage Node
 * [`quota`](#arkel-quota) — Show quota and usage for an identity (default: this node's identity)
 * [`payment`](#arkel-payment) — Payment-operator tooling (register the quota credit key; first-wins)
 * [`repair`](#arkel-repair) — Heal objects below target k/m (standalone, idempotent; run by cron)
+* [`s3`](#arkel-s3) — Serve a minimal S3-compatible API in front of the client library, so backup tools (Duplicati, restic, rclone) can use Arkel as a target
 * [`identity`](#arkel-identity) — Print this node's identity (hex pubkey, data dir, key path)
 
 ###### **Options:**
@@ -119,6 +120,26 @@ Show quota and usage for an identity (default: this node's identity)
 * `--index-addrs <INDEX_ADDRS>` — Index node HTTP URLs (comma-separated)
 
   Default value: `http://127.0.0.1:8001,http://127.0.0.1:8002,http://127.0.0.1:8003`
+
+### `arkel s3`
+Serve a minimal S3-compatible API in front of the client library, so backup tools (Duplicati, restic, rclone) can use Arkel as a target
+
+**Usage:** `arkel s3 [OPTIONS]`
+
+###### **Options:**
+
+* `--listen <LISTEN>` — Address to bind the S3 HTTP API to. Keep this on loopback or a private container network: the gateway does not authenticate requests
+
+  Default value: `127.0.0.1:9000`
+* `--index-addrs <INDEX_ADDRS>` — Index node HTTP URLs (comma-separated)
+
+  Default value: `http://127.0.0.1:8001,http://127.0.0.1:8002,http://127.0.0.1:8003`
+* `--max-object-size <MAX_OBJECT_SIZE>` — Largest accepted object in bytes (bounds memory: peak RSS ~4x this)
+
+  Default value: `67108864`
+* `--gc-interval-secs <GC_INTERVAL_SECS>` — Blob-store GC interval in seconds for forwarded shards (0 disables)
+
+  Default value: `3600`
 
 ## Running a storage node
 
